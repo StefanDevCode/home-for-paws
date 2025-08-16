@@ -1,0 +1,49 @@
+body {
+  height: 100vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/vector-1749806230892-69cf9bc921c7?q=80&w=2358&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: top;
+  text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0 0 5rem rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.cover-container {
+  max-width: 80vw;
+}
+
+.nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255);
+  margin-left: 1rem;
+  border-bottom: 0.25rem solid transparent;
+  transition: color 0.3s ease;
+  font-size: 15px;
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.btn-secondary,
+.btn-secondary:hover {
+  color: #333;
+  text-shadow: none;
+}
+
+/* Dropdown menu dark navbar*/
+.navbar-dark .dropdown-menu {
+  background-color: #343a40;
+  color: #fff;
+}
+
+.navbar-dark .dropdown-menu .dropdown-item {
+  color: #fff;
+}
+
+.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* light hover */
+  color: #fff;
+}
