@@ -27,3 +27,16 @@ export const images = [
   "https://placedog.net/501/280",
   "https://placecats.com/bella/300/200",
 ];
+
+export const locations = [
+  "Beograd",
+  "Novi Sad",
+  "Niš",
+  "Kragujevac",
+  "Subotica",
+  "Zrenjanin",
+  "Pančevo",
+  "Čačak",
+  "Kraljevo",
+  "Smederevo",
+];

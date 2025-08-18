@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
 import { Pet } from "../models/pets.js";
-import { categories, names, descriptions, images } from "./petHelpers.js";
+import {
+  categories,
+  names,
+  descriptions,
+  images,
+  locations,
+} from "./petHelpers.js";
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/paws")
@@ -21,6 +27,7 @@ const seedPets = async () => {
       image: sample(images),
       ageYears: Math.floor(Math.random() * 30),
       ageMonths: Math.floor(Math.random() * 12),
+      location: sample(locations),
     });
 
     await pet.save();

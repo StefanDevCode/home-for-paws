@@ -29,8 +29,25 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-app.get("/", (req, res) => {
-  res.render("home");
+app.get("/", async (req, res) => {
+  try {
+    // Newest pets
+    const latestPets = await Pet.find({}).sort({ createdAt: -1 }).limit(8);
+
+    // First 5 dogs
+    const dogs = await Pet.find({ category: "Pas" }).limit(4);
+
+    // First 5 cats
+    const cats = await Pet.find({ category: "Mačka" }).limit(4);
+
+    // Earliest added pets
+    const earliestPets = await Pet.find({}).sort({ createdAt: 1 }).limit(4);
+
+    res.render("home", { latestPets, dogs, cats, earliestPets });
+  } catch (err) {
+    console.log(err);
+    res.send("Došlo je do greške");
+  }
 });
 
 app.get("/psi", async (req, res) => {

@@ -1,18 +1,22 @@
 .nav-link {
   padding: 0.25rem 0;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255);
   margin-left: 1rem;
   border-bottom: 0.25rem solid transparent;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .btn-secondary,
 .btn-secondary:hover {
   color: #333;
   text-shadow: none;
+}
+
+.bg-custom {
+  background-color: rgb(65, 102, 133);
 }

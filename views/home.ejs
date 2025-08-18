@@ -1,26 +1,140 @@
-<% -layout('./layouts/boilerplate.ejs') %>
-<!DOCTYPE html>
-<html lang="en">
+<% -layout('./layouts/boilerplateHome.ejs') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dom za šape</title>
-  <link rel="stylesheet" href="/stylesheets/home.css">
-</head>
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
 
-<body class="bg-dark text-white">
-  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-    <main class="container-fluid py-5 text-center">
-      <h1>Udomi, ne kupuj</h1>
-      <p class="lead">
-        Dobrodošli na stranicu <b>Dom za šape! </b>Ovaj sajt je namenjen svim ljubiteljima životinja.
-      </p>
-      <a href="/psi" class="btn btn-lg btn-light text-dark">Udomi psa</a>
-      <a href="/macke" class="btn btn-lg btn-light text-dark">Udomi mačku</a>
-    </main>
-  </div>
+  <main class="container py-5 text-center">
 
-</body>
+    <!-- Hero section -->
+    <section class="mb-5 text-center custom-section">
+      <h1 class="display-4 fw-bold">Pokloni ljubimca <i class="fa-sharp fa-solid fa-paw"></i></a></h1>
+      <p class="lead text-muted">Udomi psa ili mačku i pronađi novog najboljeg prijatelja</p>
+      <a href="/" class="btn btn-lg btn-custom px-5 py-3 rounded-pill">
+        <i class="bi bi-heart-fill me-2"></i> Postavi oglas
+      </a>
+    </section>
 
-</html>
+    <!-- First 5 dogs -->
+    <section class="mb-5 custom-section">
+      <h2 class="mb-4 custom-title">Udomi psa</h2>
+      <div class="row g-4">
+        <% for (let dog of dogs) { %>
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="<%= dog.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-start">
+              <h5 class="card-title text-primary fw-bold"><%= dog.name %></h5>
+              <p class="mb-1">🐾 Pol: <%= dog.gender %></p>
+              <p class="mb-1">📍 Lokacija: <%= dog.location %></p>
+              <p class="mb-2">
+                ⏳ Starost:
+                <% if(dog.age.years) { %>
+                <%= dog.age.years %> godina
+                <% } else { %>
+                <%= dog.age.months %> meseci
+                <% }%>
+              </p>
+              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <div class="mt-5 mb-4">
+        <a href="/psi" class="btn btn-lg btn-dogs">
+          🐶 Pogledaj sve pse
+        </a>
+      </div>
+    </section>
+
+    <!-- First 5 cats -->
+
+    <section class="mb-5 custom-section">
+      <h2 class="mb-4 custom-title">Udomi mačku</h2>
+      <div class="row g-4">
+        <% for (let cat of cats) { %>
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="<%= cat.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-start">
+              <h5 class="card-title text-primary fw-bold"><%= cat.name %></h5>
+              <p class="mb-1">🐾 Pol: <%= cat.gender %></p>
+              <p class="mb-1">📍 Lokacija: <%= cat.location %></p>
+              <p class="mb-2">
+                ⏳ Starost:
+                <% if(cat.age.years) { %>
+                <%= cat.age.years %> godina
+                <% } else { %>
+                <%= cat.age.months %> meseci
+                <% }%>
+              </p>
+              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <div class="mt-5 mb-4">
+        <a href="/macke" class="btn btn-lg btn-cats">
+          🐱 Pogledaj sve mačke
+        </a>
+      </div>
+    </section>
+
+    <!-- Newest pets -->
+    <section class="mb-5 custom-section">
+      <h2 class="mb-4 custom-title">Najnoviji ljubimci</h2>
+      <div class="row g-4">
+        <% for (let pets of latestPets) { %>
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="<%= pets.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-start">
+              <h5 class="card-title text-primary fw-bold"><%= pets.name %></h5>
+              <p class="mb-1">🐾 Pol: <%= pets.gender %></p>
+              <p class="mb-1">📍 Lokacija: <%= pets.location %></p>
+              <p class="mb-2">
+                ⏳ Starost:
+                <% if(pets.age.years) { %>
+                <%= pets.age.years %> godina
+                <% } else { %>
+                <%= pets.age.months %> meseci
+                <% }%>
+              </p>
+              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </section>
+
+    <!-- Earliest added pets -->
+
+    <section class="mb-5 custom-section">
+      <h2 class="mb-4 custom-title">Najranije dodati</h2>
+      <div class="row g-4">
+        <% for (let pet of earliestPets) { %>
+        <div class="col-md-3">
+          <div class="card shadow-sm border-0 h-100">
+            <img src="<%= pet.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <div class="card-body text-start">
+              <h5 class="card-title text-primary fw-bold"><%= pet.name %></h5>
+              <p class="mb-1">🐾 Pol: <%= pet.gender %></p>
+              <p class="mb-1">📍 Lokacija: <%= pet.location %></p>
+              <p class="mb-2">
+                ⏳ Starost:
+                <% if(pet.age.years) { %>
+                <%= pet.age.years %> godina
+                <% } else { %>
+                <%= pet.age.months %> meseci
+                <% }%>
+              </p>
+              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </section>
+  </main>
+</div>

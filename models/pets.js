@@ -38,6 +38,10 @@ const petSchema = new mongoose.Schema({
     type: Number, // Internal field for sorting and filtering
   },
   createdAt: { type: Date, default: Date.now },
+  location: {
+    type: String,
+    required: [true, "Unesite lokaciju "],
+  },
 });
 
 // Pre 'save' hook to count total months
@@ -48,8 +52,8 @@ petSchema.pre("save", function (next) {
 
 // Optional virtual field for view years and months
 petSchema.virtual("age").get(function () {
-  const years = Math.floor(this.ageInMonths / 12);
-  const months = this.ageInMonths % 12;
+  const years = Math.floor(this.sortingAgeInMonths / 12);
+  const months = this.sortingAgeInMonths % 12;
   return { years, months };
 });
 
