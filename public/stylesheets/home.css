@@ -1,9 +1,5 @@
 body {
   height: 100vh;
-  /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/vector-1749806230892-69cf9bc921c7?q=80&w=2358&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-  background-size: cover;
-  background-position: top;*/
   background-color: white;
   color: black;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -14,7 +10,6 @@ body {
   font-weight: 700;
   color: rgba(255, 255, 255);
   margin-left: 1rem;
-  border-bottom: 0.25rem solid transparent;
   transition: color 0.3s ease;
   font-size: 15px;
 }
@@ -83,6 +78,7 @@ h2 {
   font-weight: 600;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(79, 172, 254, 0.4);
+  margin: auto;
 }
 
 .btn-dogs:hover {
@@ -140,11 +136,26 @@ h2 {
 
 .custom-section h1 {
   position: relative;
-  color: rgb(65, 102, 133);
+  color: rgb(193, 207, 218);
 
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .bg-custom {
   background-color: rgb(65, 102, 133);
+}
+
+.custom-section.full-width {
+  width: 100vw; /* viewport width */
+  margin-left: calc(-50vw + 50%);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1623387641168-d9803ddd3f35?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8px;
 }
