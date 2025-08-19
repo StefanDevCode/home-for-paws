@@ -26,6 +26,8 @@ export const images = [
   "https://placecats.com/300/200",
   "https://placedog.net/501/280",
   "https://placecats.com/bella/300/200",
+  "https://placedog.net/502/280",
+  "https://placedog.net/503/280",
 ];
 
 export const locations = [

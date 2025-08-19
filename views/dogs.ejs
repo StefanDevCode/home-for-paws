@@ -5,7 +5,7 @@
     <% for (let dog of dogs) { %>
     <div class="col-md-4 mb-3">
       <div class="card">
-        <img src="<%= dog.image %>" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center" alt="...">
+        <img src="<%= dog.images[0] %>" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= dog.name %></h5>
           <p class="card-text"><%= dog.description %></p>

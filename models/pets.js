@@ -18,9 +18,9 @@ const petSchema = new mongoose.Schema({
   description: {
     type: String,
   },
-  image: {
-    type: String,
-    required: [true, "postavite sliku ljubimca"],
+  images: {
+    type: [String],
+    required: [true, "Postavite bar jednu sliku ljubimca"],
   },
   ageYears: {
     type: Number,
@@ -41,6 +41,10 @@ const petSchema = new mongoose.Schema({
   location: {
     type: String,
     required: [true, "Unesite lokaciju "],
+  },
+  vaccinated: {
+    type: Boolean,
+    required: [true, "Unesite podatak da li je ljubimac vakcinisan"],
   },
 });
 

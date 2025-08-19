@@ -20,7 +20,7 @@
         <% for (let dog of dogs) { %>
         <div class="col-md-3">
           <div class="card shadow-sm border-0 h-100">
-            <img src="<%= dog.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <img src="<%= dog.images[0] %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
             <div class="card-body text-start">
               <h5 class="card-title text-primary fw-bold"><%= dog.name %></h5>
               <p class="mb-1">🐾 Pol: <%= dog.gender %></p>
@@ -33,7 +33,7 @@
                 <%= dog.age.months %> meseci
                 <% }%>
               </p>
-              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+              <a href="/ljubimci/<%= dog._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@
         <% for (let cat of cats) { %>
         <div class="col-md-3">
           <div class="card shadow-sm border-0 h-100">
-            <img src="<%= cat.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <img src="<%= cat.images[0] %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
             <div class="card-body text-start">
               <h5 class="card-title text-primary fw-bold"><%= cat.name %></h5>
               <p class="mb-1">🐾 Pol: <%= cat.gender %></p>
@@ -67,7 +67,7 @@
                 <%= cat.age.months %> meseci
                 <% }%>
               </p>
-              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+              <a href="/ljubimci/<%= cat._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
         <% for (let pets of latestPets) { %>
         <div class="col-md-3">
           <div class="card shadow-sm border-0 h-100">
-            <img src="<%= pets.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <img src="<%= pets.images[0] %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
             <div class="card-body text-start">
               <h5 class="card-title text-primary fw-bold"><%= pets.name %></h5>
               <p class="mb-1">🐾 Pol: <%= pets.gender %></p>
@@ -100,7 +100,7 @@
                 <%= pets.age.months %> meseci
                 <% }%>
               </p>
-              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+              <a href="/ljubimci/<%= pets._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
             </div>
           </div>
         </div>
@@ -116,7 +116,7 @@
         <% for (let pet of earliestPets) { %>
         <div class="col-md-3">
           <div class="card shadow-sm border-0 h-100">
-            <img src="<%= pet.image %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+            <img src="<%= pet.images[0]%>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
             <div class="card-body text-start">
               <h5 class="card-title text-primary fw-bold"><%= pet.name %></h5>
               <p class="mb-1">🐾 Pol: <%= pet.gender %></p>
@@ -129,7 +129,7 @@
                 <%= pet.age.months %> meseci
                 <% }%>
               </p>
-              <a href="#" class="btn btn-outline-primary w-100">Prikaži više</a>
+              <a href="/ljubimci/<%= pet._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
             </div>
           </div>
         </div>

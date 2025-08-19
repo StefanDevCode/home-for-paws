@@ -5,7 +5,7 @@
     <% for (let cat of cats) { %>
     <div class="col-md-4 mb-3">
       <div class="card">
-        <img src="<%= cat.image %>" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center" alt="...">
+        <img src="<%= cat.images[0] %>" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center" alt="...">
         <div class="card-body">
           <h5 class="card-title"><%= cat.name %></h5>
           <p class="card-text"><%= cat.description %></p>

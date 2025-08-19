@@ -60,6 +60,12 @@ app.get("/macke", async (req, res) => {
   res.render("cats", { cats });
 });
 
+app.get("/ljubimci/:id", async (req, res) => {
+  const { id } = req.params;
+  const showPet = await Pet.findById(id);
+  res.render("show", { showPet });
+});
+
 app.listen(3000, (req, res) => {
   console.log("Server is listening on 3000");
 });

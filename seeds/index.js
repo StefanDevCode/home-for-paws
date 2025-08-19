@@ -14,6 +14,11 @@ mongoose
   .catch((e) => console.log("Error", e));
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
+const sampleImages = () => {
+  const shuffled = [...images].sort(() => 0.5 - Math.random());
+  const count = Math.floor(Math.random() * 5) + 1;
+  return shuffled.slice(0, count);
+};
 
 const seedPets = async () => {
   await Pet.deleteMany({});
@@ -24,10 +29,11 @@ const seedPets = async () => {
       name: sample(names),
       gender: Math.random() > 0.5 ? "Muški" : "Ženski",
       description: sample(descriptions),
-      image: sample(images),
+      images: sampleImages(),
       ageYears: Math.floor(Math.random() * 30),
       ageMonths: Math.floor(Math.random() * 12),
       location: sample(locations),
+      vaccinated: Math.random() > 0.5,
     });
 
     await pet.save();
