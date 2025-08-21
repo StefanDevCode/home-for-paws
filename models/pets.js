@@ -6,13 +6,21 @@ const petSchema = new mongoose.Schema({
     enum: ["Pas", "Mačka"],
     required: [true, "Izaberite vrstu ljubimca (pas, mačka)"],
   },
+  contact: {
+    type: String,
+    required: [true, "Unesite broj telefona za kontakt"],
+  },
+  ageGroup: {
+    type: String,
+    enum: ["Štene", "Odrasli pas", "Mače", "Odrasla mačka"],
+  },
   name: {
     type: String,
     required: [true, "Unesite ime ljubimca"],
   },
   gender: {
     type: String,
-    enum: ["Muški", "Ženski"],
+    enum: ["Mužjak", "Ženka"],
     required: [true, "Unesite pol ljubimca"],
   },
   description: {
@@ -22,43 +30,26 @@ const petSchema = new mongoose.Schema({
     type: [String],
     required: [true, "Postavite bar jednu sliku ljubimca"],
   },
-  ageYears: {
-    type: Number,
-    required: [true, "Unesite broj godina ljubimca"],
-    min: 0,
-    max: 30,
-  },
-  ageMonths: {
-    type: Number,
-    required: [true, "Unesite broj meseci ljubimca"],
-    min: 0,
-    max: 11,
-  },
-  sortingAgeInMonths: {
-    type: Number, // Internal field for sorting and filtering
-  },
   createdAt: { type: Date, default: Date.now },
   location: {
     type: String,
     required: [true, "Unesite lokaciju "],
   },
   vaccinated: {
-    type: Boolean,
+    type: String,
+    enum: ["Da", "Ne", "Ne znam"],
     required: [true, "Unesite podatak da li je ljubimac vakcinisan"],
   },
-});
-
-// Pre 'save' hook to count total months
-petSchema.pre("save", function (next) {
-  this.sortingAgeInMonths = this.ageYears * 12 + this.ageMonths;
-  next();
-});
-
-// Optional virtual field for view years and months
-petSchema.virtual("age").get(function () {
-  const years = Math.floor(this.sortingAgeInMonths / 12);
-  const months = this.sortingAgeInMonths % 12;
-  return { years, months };
+  neutered: {
+    type: String,
+    enum: ["Da", "Ne", "Ne znam"],
+    required: [true, "Unesite podatak da li je ljubimac sterilisan"],
+  },
+  chipped: {
+    type: String,
+    enum: ["Da", "Ne", "Ne znam"],
+    required: [true, ["Unesite podatak da li je ljubimac čipovan"]],
+  },
 });
 
 export const Pet = mongoose.model("Pet", petSchema);

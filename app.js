@@ -17,6 +17,8 @@ import mongoose from "mongoose";
 import methodOverride from "method-override";
 import ejsMate from "ejs-mate";
 
+import { serbiaLocations } from "./seeds/locationHelperSerbia.js";
+
 mongoose
   .connect("mongodb://127.0.0.1:27017/paws")
   .then((data) => console.log("Connection succeded"))
@@ -35,10 +37,14 @@ app.get("/", async (req, res) => {
     const latestPets = await Pet.find({}).sort({ createdAt: -1 }).limit(8);
 
     // First 5 dogs
-    const dogs = await Pet.find({ category: "Pas" }).limit(4);
+    const dogs = await Pet.find({ category: "Pas" })
+      .sort({ createdAt: -1 })
+      .limit(4);
 
     // First 5 cats
-    const cats = await Pet.find({ category: "Mačka" }).limit(4);
+    const cats = await Pet.find({ category: "Mačka" })
+      .sort({ createdAt: -1 })
+      .limit(4);
 
     // Earliest added pets
     const earliestPets = await Pet.find({}).sort({ createdAt: 1 }).limit(4);
@@ -60,10 +66,45 @@ app.get("/macke", async (req, res) => {
   res.render("cats", { cats });
 });
 
+app.get("/ljubimci/novi", async (req, res) => {
+  res.render("new", { serbiaLocations });
+});
+
 app.get("/ljubimci/:id", async (req, res) => {
   const { id } = req.params;
   const showPet = await Pet.findById(id);
   res.render("show", { showPet });
+});
+
+app.post("/ljubimci", async (req, res) => {
+  const {
+    category,
+    contact,
+    ageGroup,
+    name,
+    gender,
+    description,
+    images,
+    location,
+    vaccinated,
+    neutered,
+    chipped,
+  } = req.body;
+  const newPet = new Pet({
+    category,
+    contact,
+    ageGroup,
+    name,
+    gender,
+    description,
+    images,
+    location,
+    vaccinated,
+    neutered,
+    chipped,
+  });
+  await newPet.save();
+  res.redirect("/");
 });
 
 app.listen(3000, (req, res) => {

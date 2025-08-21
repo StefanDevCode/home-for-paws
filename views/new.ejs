@@ -1,0 +1,188 @@
+<% layout('./layouts/boilerplate.ejs') %>
+<div class="row mt-6">
+  <h1 class="text-center">Dodaj oglas</h1>
+  <div class="col-6 offset-3">
+    <form action="/ljubimci" method="POST" class="needs-validation" novalidate>
+
+      <!-- Name of pet -->
+      <div class="mb-3">
+        <label class="form-label" for="name">Ime ljubimca</label>
+        <input class="form-control" type="text" id="name" name="name" required>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas unesite ime ljubimca.</div>
+      </div>
+
+      <!-- Contact -->
+      <div class="mb-3">
+        <label class="form-label" for="contact">Kontakt telefon</label>
+        <input class="form-control" type="text" id="contact" name="contact" required>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas unesite ime ljubimca.</div>
+      </div>
+
+      <!-- Category -->
+      <div class="mb-3">
+        <label class="form-label" for="category">Kategorija</label>
+        <select id="category" class="form-select" name="category" required>
+          <option value="" selected disabled>Izaberi ljubimca</option>
+          <option value="Pas">Pas</option>
+          <option value="Mačka">Mačka</option>
+        </select>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas izaberite kategoriju ljubimca.</div>
+      </div>
+
+      <!-- Age -->
+      <div class="mb-3">
+        <label class="form-label" for="ageGroup">Starost (prvo izaberite kategoriju ljubimca)</label>
+        <select id="ageGroup" class="form-select" name="ageGroup" required>
+          <option value="" selected disabled>Izaberi starost</option>
+        </select>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas izaberite starost ljubimca.</div>
+      </div>
+
+      <!-- Gender -->
+      <div class="mb-3">
+        <label class="form-label" for="gender">Pol</label>
+        <select id="gender" class="form-select" name="gender" required>
+          <option value="" selected disabled>Izaberi pol ljubimca</option>
+          <option value="Mužjak">Mužjak</option>
+          <option value="Ženka">Ženka</option>
+        </select>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas izaberite pol ljubimca.</div>
+      </div>
+
+      <!-- Image URL -->
+      <div class="mb-3">
+        <label class="form-label" for="images">Image Url</label>
+        <input class="form-control" type="text" id="images" name="images" required>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas unesite minimum 1 sliku.</div>
+      </div>
+
+      <!-- location -->
+      <div class="mb-3">
+        <label class="form-label" for="location">Lokacija</label>
+        <select id="mySelect" name="location" required>
+          <option value="" selected disabled>Izaberite grad</option>
+          <% for(let location of serbiaLocations) { %>
+          <option value="<%= location %>"><%= location %></option>
+          <% } %>
+        </select>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas izaberite lokaciju.</div>
+      </div>
+
+      <!-- Vaccinated -->
+      <div class="mb-3">
+        <label class="form-label" for="vaccinated">Vakcinisan/a</label>
+        <select id="category" class="form-select" name="vaccinated" required>
+          <option value="" selected disabled>Vakcinisan/a ? </option>
+          <option value="Da">Da</option>
+          <option value="Ne">Ne</option>
+          <option value="Ne znam">Ne znam</option>
+        </select>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas ostavite informaciju da li je ljubimac vakcinisan.</div>
+      </div>
+
+      <!-- Neutered -->
+      <div class="mb-3">
+        <label class="form-label" for="neutered">Sterilisan/a</label>
+        <select id="category" class="form-select" name="neutered" required>
+          <option value="" selected disabled>Sterilisan/a ? </option>
+          <option value="Da">Da</option>
+          <option value="Ne">Ne</option>
+          <option value="Ne znam">Ne znam</option>
+        </select>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas ostavite informaciju da li je ljubimac vakcinisan.</div>
+      </div>
+
+      <!-- Chipped -->
+      <div class="mb-3">
+        <label class="form-label" for="chipped">Čipovan/a</label>
+        <select id="category" class="form-select" name="chipped" required>
+          <option value="" selected disabled>Čipovan/a ? </option>
+          <option value="Da">Da</option>
+          <option value="Ne">Ne</option>
+          <option value="Ne znam">Ne znam</option>
+        </select>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas ostavite informaciju da li je ljubimac vakcinisan.</div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label class="form-label" for="description">Opis</label>
+        <textarea class="form-control" id="description" name="description" required maxlength="300"></textarea>
+        <div id="charCount" class="form-text">Preostalo karaktera: 300</div>
+        <div class="valid-feedback">Unos je validan!</div>
+        <div class="invalid-feedback">Molim Vas unesite opis.</div>
+      </div>
+
+      <div class="mb-3">
+        <button class="btn btn-success">Dodaj ljubimca</button>
+      </div>
+    </form>
+    <div class="d-flex justify-content-center gap-2">
+      <a class="btn btn-outline-primary" href="/psi">Vidi sve pse</a>
+      <a class="btn btn-outline-primary" href="/mačke">Vidi sve mačke</a>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const categorySelect = document.getElementById('category');
+  const ageGroupSelect = document.getElementById('ageGroup');
+
+  const ageOptions = {
+    Pas: [{
+        value: 'Štene',
+        text: 'Štene'
+      },
+      {
+        value: 'Odrasli pas',
+        text: 'Odrasli pas'
+      }
+    ],
+    Mačka: [{
+        value: 'Mače',
+        text: 'Mače'
+      },
+      {
+        value: 'Odrasla mačka',
+        text: 'Odrasla mačka'
+      }
+    ]
+  };
+
+  categorySelect.addEventListener('change', function() {
+    const selectedCategory = this.value;
+    ageGroupSelect.innerHTML = '<option value="" selected disabled>Izaberi starost</option>';
+
+    if (selectedCategory && ageOptions[selectedCategory]) {
+      ageOptions[selectedCategory].forEach(option => {
+        const opt = document.createElement('option');
+        opt.value = option.value;
+        opt.textContent = option.text;
+        ageGroupSelect.appendChild(opt);
+      });
+    }
+  });
+</script>
+
+<script>
+  const description = document.getElementById('description');
+  const charCount = document.getElementById('charCount');
+  const maxLength = description.getAttribute('maxlength');
+
+  description.addEventListener('input', () => {
+    const remaining = maxLength - description.value.length;
+    charCount.textContent = `Preostalo karaktera: ${remaining}`;
+  });
+</script>
+

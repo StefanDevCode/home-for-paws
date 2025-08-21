@@ -4,7 +4,7 @@
 <section class="mb-5 text-center custom-section full-width">
   <h1 class="display-4 fw-bold">Pokloni ljubimca <i class="fa-sharp fa-solid fa-paw"></i></a></h1>
   <p class="lead text-white "> Objavi oglas za psa ili mačku i pomozi im da pronađu svoj novi dom i srećnog vlasnika</p>
-  <a href="/" class="btn btn-lg btn-custom px-5 py-3 rounded-pill">
+  <a href="/ljubimci/novi" class="btn btn-lg btn-custom px-5 py-3 rounded-pill">
     <i class="bi bi-heart-fill me-2"></i> Postavi oglas
   </a>
 </section>
@@ -23,12 +23,7 @@
           <p class="mb-1">🐾 Pol: <%= dog.gender %></p>
           <p class="mb-1">📍 Lokacija: <%= dog.location %></p>
           <p class="mb-2">
-            ⏳ Starost:
-            <% if(dog.age.years) { %>
-            <%= dog.age.years %> godina
-            <% } else { %>
-            <%= dog.age.months %> meseci
-            <% }%>
+            ⏳ Starost: <%= dog.ageGroup %>
           </p>
           <a href="/ljubimci/<%= dog._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>
@@ -57,12 +52,7 @@
           <p class="mb-1">🐾 Pol: <%= cat.gender %></p>
           <p class="mb-1">📍 Lokacija: <%= cat.location %></p>
           <p class="mb-2">
-            ⏳ Starost:
-            <% if(cat.age.years) { %>
-            <%= cat.age.years %> godina
-            <% } else { %>
-            <%= cat.age.months %> meseci
-            <% }%>
+            ⏳ Starost: <%= cat.ageGroup %>
           </p>
           <a href="/ljubimci/<%= cat._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>
@@ -90,12 +80,7 @@
           <p class="mb-1">🐾 Pol: <%= pets.gender %></p>
           <p class="mb-1">📍 Lokacija: <%= pets.location %></p>
           <p class="mb-2">
-            ⏳ Starost:
-            <% if(pets.age.years) { %>
-            <%= pets.age.years %> godina
-            <% } else { %>
-            <%= pets.age.months %> meseci
-            <% }%>
+            ⏳ Starost: <%= pets.ageGroup %>
           </p>
           <a href="/ljubimci/<%= pets._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>
@@ -119,12 +104,7 @@
           <p class="mb-1">🐾 Pol: <%= pet.gender %></p>
           <p class="mb-1">📍 Lokacija: <%= pet.location %></p>
           <p class="mb-2">
-            ⏳ Starost:
-            <% if(pet.age.years) { %>
-            <%= pet.age.years %> godina
-            <% } else { %>
-            <%= pet.age.months %> meseci
-            <% }%>
+            ⏳ Starost: <%= pet.ageGroup %>
           </p>
           <a href="/ljubimci/<%= pet._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>

@@ -2,13 +2,13 @@
 
 <div class="container mt-6">
   <div class="row g-0 shadow rounded shadow rounded" style="max-width: 1000px; margin: auto;">
-    <!-- Left side -->
+    <!-- Left side picture -->
     <div class="col-md-7">
       <div id="carouselExample" class="carousel slide h-100">
         <div class="carousel-inner h-100">
           <% showPet.images.forEach((img, i) => { %>
           <div class="carousel-item <%= i === 0 ? 'active' : '' %> h-100">
-            <img src="<%= img %>" class="d-block w-100 h-100" style="object-fit: cover;" alt="Slika ljubimca">
+            <img src="<%= img %>" class="d-block w-100 h-100" style="object-fit: contain; background: #0f0f0f;" alt="Slika ljubimca">
           </div>
           <% }) %>
         </div>
@@ -27,23 +27,21 @@
     <!-- Right side - Card info -->
     <div class="col-md-5 bg-light d-flex flex-column">
       <div class="card-body p-4">
-        <h4 class="card-title mb-3"><%= showPet.name %></h4>
+        <h4 class="card-title mb-3 text-center"><%= showPet.name %></h4>
         <ul class="list-group list-group-flush">
           <li class="list-group-item"><b>Oglas postavio:</b> </li>
-          <li class="list-group-item"><b>Kontakt:</b> </li>
+          <li class="list-group-item"><b>Kontakt: <%= showPet.contact %></b> </li>
           <li class="list-group-item"><b>Pol:</b> <%= showPet.gender %></li>
           <li class="list-group-item"><b>Lokacija:</b> <%= showPet.location %></li>
           <li class="list-group-item">
             <b>Starost:</b>
-            <% if(showPet.age.years) { %>
-            <%= showPet.age.years %> godina
-            <% } else { %>
-            <%= showPet.age.months %> meseci
-            <% } %>
+            <%= showPet.ageGroup %>
           </li>
-          <li class="list-group-item"><b>Objavljeno:</b> <%= showPet.createdAt.toLocaleDateString("sr-RS") %></li>
-          <li class="list-group-item"><b>Vakcinisan:</b> <%= showPet.vaccinated ? "Da" : "Ne" %></li>
+          <li class="list-group-item"><b>Vakcinisan:</b> <%= showPet.vaccinated  %></li>
+          <li class="list-group-item"><b>Sterilisan:</b> <%= showPet.neutered ? "Da" : "Ne"%></li>
+          <li class="list-group-item"><b>Čipovan:</b> <%= showPet.chipped  %></li>
           <li class="list-group-item"><%= showPet.description %></li>
+          <li class="list-group-item"><b>Objavljeno:</b> <%= showPet.createdAt.toLocaleDateString("sr-RS") %></li>
         </ul>
       </div>
       <div class="card-body text-center mt-auto pb-4">
