@@ -1,5 +1,5 @@
 new SlimSelect({
-  select: "#mySelect",
+  select: "#locationSelect",
   settings: {
     placeholder: "Izaberite grad",
     search: true,

@@ -48,7 +48,18 @@ const petSchema = new mongoose.Schema({
   chipped: {
     type: String,
     enum: ["Da", "Ne", "Ne znam"],
-    required: [true, ["Unesite podatak da li je ljubimac čipovan"]],
+    required: [true, "Unesite podatak da li je ljubimac čipovan"],
+  },
+  breed: {
+    type: String,
+    required: [true, "Izaberite rasu"],
+  },
+  adopted: {
+    type: Boolean,
+    default: false,
+  },
+  adoptedAt: {
+    type: Date,
   },
 });
 

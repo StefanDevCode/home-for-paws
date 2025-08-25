@@ -5,44 +5,6 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.nav-link {
-  padding: 0.25rem 0;
-  font-weight: 700;
-  color: rgba(255, 255, 255);
-  margin-left: 1rem;
-  transition: color 0.3s ease;
-  font-size: 15px;
-}
-
-.nav-link:hover {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.btn-secondary,
-.btn-secondary:hover {
-  color: #333;
-  text-shadow: none;
-}
-
-/* Dropdown menu dark navbar*/
-.navbar-dark .dropdown-menu {
-  background-color: #343a40;
-  color: #fff;
-}
-
-.navbar-dark .dropdown-menu .dropdown-item {
-  color: #fff;
-}
-
-.navbar-dark .dropdown-menu .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* light hover */
-  color: #fff;
-}
-
-i.fa-sharp {
-  margin-left: 4px;
-}
-
 .card-body {
   display: flex;
   flex-direction: column;
@@ -139,10 +101,6 @@ h2 {
   color: rgb(193, 207, 218);
 
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-}
-
-.bg-custom {
-  background-color: rgb(65, 102, 133);
 }
 
 .custom-section.full-width {

@@ -17,14 +17,13 @@
     <% for (let dog of dogs) { %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
       <div class="card shadow-sm border-0 h-100">
-        <img src="<%= dog.images[0] %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+        <img src="<%= dog.images[0] && dog.images[0].includes('http') ? dog.images[0] : 'https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
         <div class="card-body text-start">
           <h5 class="card-title text-primary fw-bold"><%= dog.name %></h5>
           <p class="mb-1">🐾 Pol: <%= dog.gender %></p>
           <p class="mb-1">📍 Lokacija: <%= dog.location %></p>
-          <p class="mb-2">
-            ⏳ Starost: <%= dog.ageGroup %>
-          </p>
+          <p class="mb-1">⏳ Starost: <%= dog.ageGroup %></p>
+          <p class="mb-2">📅 Postavljeno: <%= dog.createdAt.toLocaleDateString("sr-RS") %></p>
           <a href="/ljubimci/<%= dog._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>
       </div>
@@ -32,7 +31,7 @@
     <% } %>
   </div>
   <div class="mt-5 mb-4">
-    <a href="/psi" class="btn btn-lg btn-dogs">
+    <a href="/ljubimci/psi" class="btn btn-lg btn-dogs">
       🐶 Pogledaj sve pse
     </a>
   </div>
@@ -46,14 +45,13 @@
     <% for (let cat of cats) { %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
       <div class="card shadow-sm border-0 h-100">
-        <img src="<%= cat.images[0] %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+        <img src="<%= cat.images[0] && cat.images[0].includes('http') ? cat.images[0] : 'https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
         <div class="card-body text-start">
           <h5 class="card-title text-primary fw-bold"><%= cat.name %></h5>
           <p class="mb-1">🐾 Pol: <%= cat.gender %></p>
           <p class="mb-1">📍 Lokacija: <%= cat.location %></p>
-          <p class="mb-2">
-            ⏳ Starost: <%= cat.ageGroup %>
-          </p>
+          <p class="mb-1">⏳ Starost: <%= cat.ageGroup %> </p>
+          <p class="mb-2">📅 Postavljeno: <%= cat.createdAt.toLocaleDateString("sr-RS") %></p>
           <a href="/ljubimci/<%= cat._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>
       </div>
@@ -61,7 +59,7 @@
     <% } %>
   </div>
   <div class="mt-5 mb-4">
-    <a href="/macke" class="btn btn-lg btn-cats">
+    <a href="/ljubimci/macke" class="btn btn-lg btn-cats">
       🐱 Pogledaj sve mačke
     </a>
   </div>
@@ -71,18 +69,17 @@
 <section class="mb-5 custom-section">
   <h2 class="mb-4 custom-title">Najnoviji ljubimci</h2>
   <div class="row g-4">
-    <% for (let pets of latestPets) { %>
+    <% for (let pet of latestPets) { %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
       <div class="card shadow-sm border-0 h-100">
-        <img src="<%= pets.images[0] %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+        <img src="<%= pet.images[0] && pet.images[0].includes('http') ? pet.images[0] : 'https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
         <div class="card-body text-start">
-          <h5 class="card-title text-primary fw-bold"><%= pets.name %></h5>
-          <p class="mb-1">🐾 Pol: <%= pets.gender %></p>
-          <p class="mb-1">📍 Lokacija: <%= pets.location %></p>
-          <p class="mb-2">
-            ⏳ Starost: <%= pets.ageGroup %>
-          </p>
-          <a href="/ljubimci/<%= pets._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
+          <h5 class="card-title text-primary fw-bold"><%= pet.name %></h5>
+          <p class="mb-1">🐾 Pol: <%= pet.gender %></p>
+          <p class="mb-1">📍 Lokacija: <%= pet.location %></p>
+          <p class="mb-1">⏳ Starost: <%= pet.ageGroup %></p>
+          <p class="mb-2">📅 Postavljeno: <%= pet.createdAt.toLocaleDateString("sr-RS") %></p>
+          <a href="/ljubimci/<%= pet._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>
       </div>
     </div>
@@ -98,14 +95,13 @@
     <% for (let pet of earliestPets) { %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
       <div class="card shadow-sm border-0 h-100">
-        <img src="<%= pet.images[0]%>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
+        <img src="<%= pet.images[0] && pet.images[0].includes('http') ? pet.images[0] : 'https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' %>" class="card-img-top rounded-top" style="height: 200px; object-fit: cover;">
         <div class="card-body text-start">
           <h5 class="card-title text-primary fw-bold"><%= pet.name %></h5>
           <p class="mb-1">🐾 Pol: <%= pet.gender %></p>
           <p class="mb-1">📍 Lokacija: <%= pet.location %></p>
-          <p class="mb-2">
-            ⏳ Starost: <%= pet.ageGroup %>
-          </p>
+          <p class="mb-1">⏳ Starost: <%= pet.ageGroup %> </p>
+          <p class="mb-2">📅 Postavljeno: <%= pet.createdAt.toLocaleDateString("sr-RS") %></p>
           <a href="/ljubimci/<%= pet._id %>" class="btn btn-outline-primary w-100">Prikaži više</a>
         </div>
       </div>

@@ -7,6 +7,7 @@ import {
   dogImages,
   catImages,
   locations,
+  breeds,
 } from "./petHelpers.js";
 
 mongoose
@@ -19,7 +20,7 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)];
 const sampleImages = (category) => {
   const source = category === "Pas" ? dogImages : catImages;
   const shuffled = [...source].sort(() => 0.5 - Math.random());
-  const count = Math.floor(Math.random() * 3) + 1; // 1 do 3 slike
+  const count = Math.floor(Math.random() * 3) + 1;
   return shuffled.slice(0, count);
 };
 
@@ -28,6 +29,7 @@ const sampleYesNoUnknown = () => sample(["Da", "Ne", "Ne znam"]);
 const seedPets = async () => {
   await Pet.deleteMany({});
   for (let i = 0; i < 50; i++) {
+    const isAdopted = Math.random() > 0.5;
     const category = sample(categories);
     const possibleAgeGroups =
       category === "Pas" ? ["Štene", "Odrasli pas"] : ["Mače", "Odrasla mačka"];
@@ -43,6 +45,9 @@ const seedPets = async () => {
       neutered: sampleYesNoUnknown(),
       chipped: sampleYesNoUnknown(),
       contact: "0602233445",
+      breed: category === "Pas" ? sample(breeds.dog) : sample(breeds.cat),
+      adopted: isAdopted,
+      adoptedAt: isAdopted ? new Date() : undefined,
     });
 
     await pet.save();

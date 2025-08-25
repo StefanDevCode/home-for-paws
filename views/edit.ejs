@@ -1,8 +1,10 @@
 <% layout('./layouts/boilerplate.ejs') %>
 <div class="row mt-2">
-  <h1 class="text-center">Dodaj oglas</h1>
+  <h1 class="text-center">Izmeni oglas</h1>
   <div class="col-6 offset-3">
-    <form action="/ljubimci" method="POST" class="needs-validation" novalidate>
+
+    <form action="/ljubimci/<%=editPet._id%>?_method=PUT" method="POST" class="needs-validation" novalidate>
+
       <!-- Category -->
       <div class="mb-3">
         <label class="form-label" for="category">Vrsta ljubimca</label>
@@ -18,7 +20,7 @@
       <!-- Name of pet -->
       <div class="mb-3">
         <label class="form-label" for="name">Ime ljubimca</label>
-        <input class="form-control" type="text" id="name" name="name" required>
+        <input class="form-control" type="text" id="name" name="name" required value="<%= editPet.name %>">
         <div class="valid-feedback">Unos je validan!</div>
         <div class="invalid-feedback">Molim Vas unesite ime ljubimca.</div>
       </div>
@@ -26,7 +28,7 @@
       <!-- Contact -->
       <div class="mb-3">
         <label class="form-label" for="contact">Kontakt telefon</label>
-        <input class="form-control" type="text" id="contact" name="contact" required>
+        <input class="form-control" type="text" id="contact" name="contact" required value="<%= editPet.contact %>">
         <div class="valid-feedback">Unos je validan!</div>
         <div class="invalid-feedback">Molim Vas unesite kontakt.</div>
       </div>
@@ -71,6 +73,7 @@
         <div class="valid-feedback">Unos je validan!</div>
         <div class="invalid-feedback">Molim Vas unesite minimum 1 sliku.</div>
       </div>
+
 
       <!-- location JavaScript public folder/petSelect (slimSelect.js) npm slimSelect-->
       <div class="mb-3">
@@ -134,14 +137,14 @@
       </div>
 
       <div class="mb-3">
-        <button class="btn btn-success">Dodaj ljubimca</button>
+        <button class="btn btn-success">Izmeni oglas</button>
       </div>
     </form>
     <div class="d-flex justify-content-center gap-2">
       <a class="btn btn-outline-primary" href="/psi">Vidi sve pse</a>
       <a class="btn btn-outline-primary" href="/mačke">Vidi sve mačke</a>
     </div>
-
+    </form>
   </div>
 </div>
 

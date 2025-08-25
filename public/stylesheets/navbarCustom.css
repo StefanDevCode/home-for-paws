@@ -6,7 +6,9 @@
   border-bottom: 0.25rem solid transparent;
   transition: color 0.3s ease;
 }
-
+i.fa-sharp {
+  margin-left: 4px;
+}
 .nav-link:hover {
   color: rgba(255, 255, 255, 0.5);
 }
@@ -19,4 +21,19 @@
 
 .bg-custom {
   background-color: rgb(65, 102, 133);
+}
+
+/* Dropdown menu dark navbar*/
+.navbar-dark .dropdown-menu {
+  background-color: rgb(65, 102, 133);
+  color: #fff;
+}
+
+.navbar-dark .dropdown-menu .dropdown-item {
+  color: #fff;
+}
+
+.navbar-dark .dropdown-menu .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* light hover */
+  color: #fff;
 }

@@ -8,12 +8,14 @@
   </link>
   <script src="https://kit.fontawesome.com/24d5e85a7e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/stylesheets/home.css">
+  <link rel="stylesheet" href="/stylesheets/navbarCustom.css">
   <title>Dom za šape</title>
 </head>
 
 <body class="d-flex flex-column vh-100">
   <%- include('../partials/navbar.ejs') %>
   <main class="container py-5 text-center px-5">
+    <%- include('../partials/flash.ejs')  %>
     <%- body %>
   </main>
   <%- include('../partials/footer.ejs') %>
