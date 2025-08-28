@@ -1,63 +1,74 @@
 <% layout('./layouts/boilerplate.ejs') %>
 
-<div class="container mt-6">
-  <div class="row g-0 shadow rounded shadow rounded" style="max-width: 1000px; margin: auto;">
-    <!-- Left side picture -->
-    <div class="col-md-7">
-      <div id="carouselExample" class="carousel slide h-100">
-        <div class="carousel-inner h-100">
-          <% showPet.images.forEach((img, i) => { %>
-          <div class="carousel-item <%= i === 0 ? 'active' : '' %> h-100">
-            <img src="<%= img && img.includes('https') ? img : 'https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' %>" class="d-block w-100 h-100" style="object-fit: contain; background: #0f0f0f;" alt="Slika ljubimca">
+<div class="container my-5">
+  <div class="row g-4">
+
+    <!-- Left column: carousel + additional container below -->
+    <div class="col-md-7 d-flex flex-column">
+
+      <!-- Carousel -->
+      <div id="petCarousel" class="carousel slide mb-3" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% showPet.images.forEach((image, index) => { %>
+          <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+            <img src="<%= image && image.includes('http') ? image : 'https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1170&auto=format&fit=crop' %>" class="d-block w-100" style="height: 400px; object-fit: cover;">
           </div>
           <% }) %>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#petCarousel" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>
 
-    </div>
-
-    <!-- Right side - Card info -->
-    <div class="col-md-5 bg-light d-flex flex-column">
-      <div class="card-body p-4">
-        <h4 class="card-title mb-3 text-center"><%= showPet.name %></h4>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><b>Oglas postavio:</b> </li>
-          <li class="list-group-item"><b>Kontakt: <%= showPet.contact %></b> </li>
-          <li class="list-group-item"><b>Pol:</b> <%= showPet.gender %></li>
-          <li class="list-group-item"><b>Rasa:</b> <%= showPet.breed %></li>
-          <li class="list-group-item"><b>Lokacija:</b> <%= showPet.location %></li>
-          <li class="list-group-item">
-            <b>Starost:</b>
-            <%= showPet.ageGroup %>
-          </li>
-          <li class="list-group-item"><b>Vakcinisan/a:</b> <%= showPet.vaccinated  %></li>
-          <li class="list-group-item"><b>Sterilisan/a:</b> <%= showPet.neutered ? "Da" : "Ne"%></li>
-          <li class="list-group-item"><b>Čipovan/a:</b> <%= showPet.chipped  %></li>
-          <li class="list-group-item word-break"><b>Opis:</b> <%= showPet.description %></li>
-          <li class="list-group-item"><b>Objavljeno:</b> <%= showPet.createdAt.toLocaleDateString("sr-RS") %></li>
-        </ul>
-      </div>
-      <div class="card-body text-center mt-auto pb-4">
-
-        <form class="d-inline" action="/ljubimci/<%=showPet._id%>/udomljeni" method="POST">
-          <button class="btn btn-primary">Udomljen</button>
-        </form>
-
-        <a href="/ljubimci/<%=showPet._id%>/izmeni" class="btn btn-info mx-2">Izmeni oglas</a>
-
-        <form class="d-inline" action="/ljubimci/<%=showPet._id%>?_method=DELETE" method="POST">
-          <button class="btn btn-danger">Obriši oglas</button>
-        </form>
-
+      <!-- Additional container below carousela -->
+      <div class="extra-container p-3 bg-secondary text-white mt-3 flex-grow-1">
+        <p class="word-break"><%= showPet.description || "Nema dodatnog opisa" %></p>
       </div>
 
     </div>
+
+    <!-- Right column: description and details -->
+    <div class="col-md-5 bg-light d-flex flex-column p-4">
+      <h2 class="text-center"><%= showPet.name %></h2>
+      <ul class="list-group shadow-sm rounded bg-white">
+        <li class="list-group-item"><b>Oglas postavio:</b> </li>
+        <li class="list-group-item"><b>Kontakt: <%= showPet.contact %></b> </li>
+        <li class="list-group-item"><b>Pol:</b> <%= showPet.gender %></li>
+        <li class="list-group-item"><b>Rasa:</b> <%= showPet.breed %></li>
+        <li class="list-group-item"><b>Lokacija:</b> <%= showPet.location %></li>
+        <li class="list-group-item">
+          <b>Starost:</b>
+          <%= showPet.ageGroup %>
+        </li>
+        <li class="list-group-item"><b>Vakcinisan/a:</b> <%= showPet.vaccinated  %></li>
+        <li class="list-group-item"><b>Sterilisan/a:</b> <%= showPet.neutered ? "Da" : "Ne"%></li>
+        <li class="list-group-item"><b>Čipovan/a:</b> <%= showPet.chipped  %></li>
+        <li class="list-group-item"><b>Objavljeno:</b> <%= showPet.createdAt.toLocaleDateString("sr-RS") %></li>
+      </ul>
+
+    </div>
+
   </div>
+</div>
+
+<div class="card-body text-center mt-auto pb-4">
+
+  <form class="d-inline" action="/ljubimci/<%=showPet._id%>/udomljeni" method="POST">
+    <button class="btn btn-primary">Udomljen</button>
+  </form>
+
+  <a href="/ljubimci/<%=showPet._id%>/izmeni" class="btn btn-info mx-2">Izmeni oglas</a>
+
+  <form class="d-inline" action="/ljubimci/<%=showPet._id%>?_method=DELETE" method="POST">
+    <button class="btn btn-danger">Obriši oglas</button>
+  </form>
+
+</div>
+
+</div>
+</div>

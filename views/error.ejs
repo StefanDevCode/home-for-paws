@@ -3,8 +3,8 @@
 <div class="container text-center py-5 mt-5 d-flex flex-column align-items-center justify-content-center vh-100">
   <h1 class="display-3 fw-bold text-secondary mb-3"><%= error.status %></h1>
   <h2 class="h4 text-secondary mb-3"><%= error.message %></h2>
-  <img src="https://images.unsplash.com/vector-1745284582125-97c9c2a4180e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dog 404 Illustration" class="img-fluid mb-4" style="max-width: 400px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <% if(error.status === 404) { %>
+  <img src="https://images.unsplash.com/vector-1745284582125-97c9c2a4180e?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Dog 404 Illustration" class="img-fluid mb-4" style="max-width: 400px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
   <p class="lead text-muted mb-4">Izgleda da stranica koju tražiš ne postoji ili je premestena.</p>
   <% } %>
   <% if (process.env.NODE_ENV !== "production") { %>

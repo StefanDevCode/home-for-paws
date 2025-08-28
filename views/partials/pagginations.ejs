@@ -1,0 +1,30 @@
+  <div class="pagination d-flex justify-content-center mt-4">
+    <% if (page > 1) { %>
+    <a href="?page=<%= page - 1 %>" class="page-link">⬅ Prethodna</a>
+    <% } %>
+
+    <% let startPage = Math.max(1, page - 2); %>
+    <% let endPage = Math.min(totalPages, page + 2); %>
+
+    <% if (startPage > 1) { %>
+    <a href="?page=1" class="page-link">1</a>
+    <% if (startPage > 2) { %> <span class="dots">...</span> <% } %>
+    <% } %>
+
+    <% for (let i = startPage; i <= endPage; i++) { %>
+    <% if (i === page) { %>
+    <span class="page-link active"><%= i %></span>
+    <% } else { %>
+    <a href="?page=<%= i %>" class="page-link"><%= i %></a>
+    <% } %>
+    <% } %>
+
+    <% if (endPage < totalPages) { %>
+    <% if (endPage < totalPages - 1) { %> <span class="dots">...</span> <% } %>
+    <a href="?page=<%= totalPages %>" class="page-link"><%= totalPages %></a>
+    <% } %>
+
+    <% if (page < totalPages) { %>
+    <a href="?page=<%= page + 1 %>" class="page-link">Sledeća ➡</a>
+    <% } %>
+  </div>

@@ -1,0 +1,30 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px; 
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.page-link {
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.page-link:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.page-link.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.dots {
+  padding: 5px 10px;
+}
