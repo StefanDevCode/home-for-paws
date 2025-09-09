@@ -19,6 +19,10 @@ import session from "express-session";
 import flash from "connect-flash";
 import homeRoute from "./routes/home.js";
 import petRoutes from "./routes/pets.js";
+import passport from "passport";
+import { Strategy as LocalStrategy } from "passport-local";
+import { User } from "./models/users.js";
+import userRoutes from "./routes/users.js";
 
 mongoose
   .connect("mongodb://127.0.0.1:27017/paws")
@@ -42,12 +46,20 @@ const configSession = {
 app.use(session(configSession));
 app.use(flash());
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
 });
 
+app.use("/", userRoutes);
 app.use("/", homeRoute);
 app.use("/ljubimci", petRoutes);
 

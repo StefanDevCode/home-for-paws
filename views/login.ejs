@@ -1,0 +1,43 @@
+<% layout("./layouts/boilerplate.ejs") %>
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+      <div class="card shadow">
+        <img src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80" alt="" class="card-img-top" />
+
+        <div class="card-body">
+          <h5 class="card-title text-center mb-4">Uloguj se</h5>
+
+          <form action="/login" method="POST" class="validated-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="username">Username</label>
+              <input class="form-control" type="text" id="username" name="username" autofocus required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="password">Password</label>
+              <input class="form-control" type="password" id="password" name="password" required>
+            </div>
+
+            <a href="#" class="d-block mb-3">Zaboravio si lozinku?</a>
+            <button class="btn btn-success w-100 mb-3">Uloguj se</button>
+          </form>
+
+          <!-- Divider -->
+          <div class="d-flex align-items-center my-3">
+            <hr class="flex-grow-1" />
+            <span class="mx-2 text-muted">ili</span>
+            <hr class="flex-grow-1" />
+          </div>
+
+          <!-- Google Sign-In -->
+          <a href="/auth/google" class="btn btn-outline-dark w-100 d-flex align-items-center justify-content-center gap-2">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" width="20" height="20">
+            <span>Prijavi se pomoću Google naloga</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

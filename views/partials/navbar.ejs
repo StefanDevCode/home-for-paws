@@ -41,9 +41,12 @@
 
       <!-- Right side -->
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/login">PRIJAVI SE</a>
-        <a class="nav-link" href="/register">REGISTRUJ SE </a>
+        <% if(!currentUser) {%>
+        <a class="nav-link" href="/login">ULOGUJ SE</a>
+        <a class="nav-link" href="/register">REGISTRUJ SE</a>
+        <% } else {%>
         <a class="nav-link" href="/logout">ODJAVI SE</a>
+        <% } %>
       </div>
     </div>
   </div>
