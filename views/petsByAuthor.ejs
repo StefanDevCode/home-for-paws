@@ -1,0 +1,9 @@
+<h2>Ljubimci korisnika: <%= pets[0].author.username || "Nepoznat" %></h2>
+
+<ul>
+  <% pets.forEach(pet => { %>
+  <li>
+    <a href="/ljubimci/<%= pet._id %>"><%= pet.name %></a>
+  </li>
+  <% }) %>
+</ul>

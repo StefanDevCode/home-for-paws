@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Pet } from "../models/pets.js";
+
 import {
   categories,
   names,
@@ -28,12 +29,15 @@ const sampleYesNoUnknown = () => sample(["Da", "Ne", "Ne znam"]);
 
 const seedPets = async () => {
   await Pet.deleteMany({});
+
+  console.log("Obrisani svi korisnici");
   for (let i = 0; i < 50; i++) {
     const isAdopted = Math.random() > 0.5;
     const category = sample(categories);
     const possibleAgeGroups =
       category === "Pas" ? ["Štene", "Odrasli pas"] : ["Mače", "Odrasla mačka"];
     const pet = new Pet({
+      author: "68c069a88be2a1d3dfe0c23f",
       category,
       ageGroup: sample(possibleAgeGroups),
       name: sample(names),
@@ -48,6 +52,7 @@ const seedPets = async () => {
       breed: category === "Pas" ? sample(breeds.dog) : sample(breeds.cat),
       adopted: isAdopted,
       adoptedAt: isAdopted ? new Date() : undefined,
+      approved: true,
     });
 
     await pet.save();

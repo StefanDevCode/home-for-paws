@@ -1,0 +1,31 @@
+<% layout('./layouts/boilerplate.ejs') %>
+
+<div class="container mt-4">
+  <h2 class="mb-4">Ljubimci na odobravanje</h2>
+  <div class="row">
+    <% if (pendingPets.length === 0) { %>
+    <p class="text-muted">Trenutno nema ljubimaca na čekanju.</p>
+    <% } %>
+
+    <% for (let pet of pendingPets) { %>
+    <div class="col-12 col-md-6 col-lg-4 g-4">
+      <div class="card h-100 shadow-sm">
+        <img src="<%= pet.images[0] && pet.images[0].includes('http') ? pet.images[0] : 'https://images.unsplash.com/photo-1601758177266-bc599de87707?q=80&w=1170&auto=format&fit=crop' %>" class="card-img-top" style="height: 200px; object-fit: cover; object-position: center" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= pet.name %></h5>
+          <p class="card-text"><%= pet.description %></p>
+          <a href="/ljubimci/<%= pet._id %>" class="btn btn-outline-primary btn-sm mb-2">Prikaži više</a>
+
+          <form action="/ljubimci/odobri/<%= pet._id %>" method="POST" class="d-inline">
+            <button type="submit" class="btn btn-success btn-sm">Odobri</button>
+          </form>
+
+          <form action="/ljubimci/neodobri/<%= pet._id %>" method="POST" class="d-inline" onsubmit="return confirm('Da li ste sigurni da želite odbiti ovaj oglas?');">
+            <button type="submit" class="btn btn-danger btn-sm">Ne odobri</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

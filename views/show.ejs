@@ -36,7 +36,10 @@
     <div class="col-md-5 bg-light d-flex flex-column p-4">
       <h2 class="text-center"><%= showPet.name %></h2>
       <ul class="list-group shadow-sm rounded bg-white">
-        <li class="list-group-item"><b>Oglas postavio:</b> </li>
+        <li class="list-group-item"><b>Oglas postavio:</b>
+          <a href="/author/<%= showPet.author._id %>">Autor: <%= showPet.author ? (showPet.author.displayName || showPet.author.username) : "Nepoznat" %></a>
+
+        </li>
         <li class="list-group-item"><b>Kontakt: <%= showPet.contact %></b> </li>
         <li class="list-group-item"><b>Pol:</b> <%= showPet.gender %></li>
         <li class="list-group-item"><b>Rasa:</b> <%= showPet.breed %></li>
@@ -56,7 +59,7 @@
   </div>
 </div>
 
-<% if(currentUser) { %>
+<%  if(currentUser && (showPet.author.equals(currentUser._id) || currentUser.isAdmin))  {%>
 
 <div class="card-body text-center mt-auto pb-4">
 

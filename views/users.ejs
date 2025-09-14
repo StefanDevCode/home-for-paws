@@ -1,0 +1,45 @@
+<% layout('../views/layouts/boilerplate.ejs') %>
+
+<div class="container mt-5">
+  <h1 class="mb-4">Pregled korisnika</h1>
+
+  <% if (users.length === 0) { %>
+  <p>Nema registrovanih korisnika.</p>
+  <% } else { %>
+  <table class="table table-bordered table-hover">
+    <thead class="table-light">
+      <tr>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.forEach(user => { %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.email %></td>
+        <td>
+          <% if (user.isAdmin) { %>
+          <span class="badge bg-danger">Admin</span>
+          <% } else { %>
+          <span class="badge bg-secondary">Korisnik</span>
+          <% } %>
+        </td>
+        <td>
+          <% if (!user.isAdmin) { %>
+          <!-- spreči da admin sam sebe obriše -->
+          <form action="/admin/users/<%= user._id %>?_method=DELETE" method="POST" onsubmit="return confirm('Da li ste sigurni da želite obrisati ovog korisnika i sve njegove oglase?');">
+            <button class="btn btn-sm btn-danger">Obriši nalog</button>
+          </form>
+          <% } else { %>
+          <span class="text-muted">Nije dozvoljeno</span>
+          <% } %>
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <% } %>
+</div>

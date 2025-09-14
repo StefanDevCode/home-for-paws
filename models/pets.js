@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const petSchema = new mongoose.Schema({
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   category: {
     type: String,
     enum: ["Pas", "Mačka"],
@@ -60,6 +61,10 @@ const petSchema = new mongoose.Schema({
   },
   adoptedAt: {
     type: Date,
+  },
+  approved: {
+    type: Boolean,
+    default: false, // kada korisnik postavi, admin mora da odobri
   },
 });
 
